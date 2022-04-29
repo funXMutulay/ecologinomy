@@ -1,0 +1,87 @@
+version: "3.7"
+   
+   
+services:
+     produit:
+       image: sesphynx/microservice-produit:0.0.1-SNAPSHOT
+       mem_limit: 700m
+       ports:
+          - "8000:8000"
+       networks:
+          - nioun-network  
+       depends_on:
+          - discovery
+       environment:
+          EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://discovery:8761/eureka
+      
+     commande: 
+         image: sesphynx/microservice-commande:0.0.1-SNAPSHOT
+         mem_limit: 700m
+         ports:
+           - "8100:8100"
+         networks:
+           - nioun-network
+         depends_on:
+            - discovery
+         environment:
+           EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://discovery:8761/eureka    
+          
+     client: 
+         image: sesphynx/microservice-client:0.0.1-SNAPSHOT
+         mem_limit: 700m
+         ports:
+           - "8200:8200"
+         networks:
+           - nioun-network
+         depends_on:
+            - discovery
+         environment:
+           EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://discovery:8761/eureka    
+     
+     fournisseur: 
+         image: sesphynx/microservice-fournisseur:0.0.1-SNAPSHOT
+         mem_limit: 700m
+         ports:
+           - "8300:8300"
+         networks:
+           - nioun-network
+         depends_on:
+            - discovery
+         environment:
+           EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://discovery:8761/eureka    
+    
+     paiement: 
+         image: sesphynx/microservice-paiement:0.0.1-SNAPSHOT
+         mem_limit: 700m
+         ports:
+           - "8500:8500"
+         networks:
+           - nioun-network
+         depends_on:
+            - discovery
+         environment:
+           EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://discovery:8761/eureka    
+    
+     
+     discovery:
+       image: sesphynx/microservice-discovery:0.0.1-SNAPSHOT
+       mem_limit: 700m
+       ports:
+         - "8761:8761"
+       networks:
+          - nioun-network  
+     
+     gateway:
+        image: sesphynx/microservice-gateway:0.0.1-SNAPSHOT
+        mem_limit: 700m
+        ports:
+           - "8765:8765"
+        networks:
+           - nioun-network 
+        depends_on:
+           - discovery 
+        environment:
+           EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://discovery:8761/eureka    
+              
+networks:
+   nioun-network:

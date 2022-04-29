@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.nioun.essentials</groupId>
+  <artifactId>ecologinomy</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Ecologinomy</name>
+  <description> Ecologic Economy </description>
+  <packaging>pom</packaging>
+  
+  <properties>
+  	<maven.compiler.source>17</maven.compiler.source>
+  	<maven.compiler.value>17</maven.compiler.value>
+  </properties>
+  
+  <modules>
+     <module>bien-service</module>
+     <module>client</module>
+     <module>commande</module>
+     <module>config-server</module>
+     <module>discovery</module>
+     <module>fournisseur</module>
+     <module>gateway</module>
+     <module>produit</module>
+  </modules>
+</project>
